@@ -28,16 +28,16 @@ AO245_Testis_R2_trim_paired.fastq.gz
 
 
 Define an bash array with all of the name prefixes
-
+```
 samples[1]=AO245_Heart
 samples[2]=AO245_Liver
 samples[3]=AO245_Muscle
 samples[4]=AO245_Kidney
 samples[5]=AO245_Lung
 samples[6]=AO245_Testis
-
+```
 Now do the alignment with a bash script
-
+```
 for i in {1..6}
 do
     sample=${samples[${i}]}
@@ -53,6 +53,10 @@ do
     /usr/local/bin/samtools view -bt ${reference} -o ${sample}.bam ${sample}.sam
     # delete the sam file
     rm -f ${sample}.sam
+    # sort the file
+    samtools sort -on file.bam | samtools view - | htseq-count (options) - GTF > counts.txt
+    
     #Count the number of reads mapping to each feature using HTSeq
     htseq-count --format=bam --stranded=no --order=pos ${sample}.bam ${annotation} > ${sample}_htseq_counts.txt
 done
+```
