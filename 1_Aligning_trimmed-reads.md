@@ -64,6 +64,7 @@ Now do the alignment with a bash script
 
 tympreference="/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta"
 
+annotation="/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta.transdecoder_dir/longest_orfs.gff3"
 
 samples="AO245_Heart
 AO245_Liver
@@ -83,8 +84,8 @@ do
     # delete the sam file
     rm -f ${sample}.sam
     # Sort by read name
-    samtools sort -n ${sample}.bam ${sample}_sorted    
+    samtools sort -n ${sample}.bam -o ${sample}_sorted    
     #Count the number of reads mapping to each feature using HTSeq
-    #htseq-count --format=bam --stranded=no --order=pos ${sample}.bam ${annotation} > ${sample}_htseq_counts.txt
+    htseq-count --format=bam --stranded=no --order=name --type=gene --idattr=ID ${sample}.bam ${annotation} > ${sample}_htseq_counts.txt
 done
 ```
