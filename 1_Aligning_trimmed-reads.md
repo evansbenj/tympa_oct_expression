@@ -20,11 +20,14 @@ AO245_Testis_R1_trim_paired.fastq.gz
 AO245_Testis_R2_trim_paired.fastq.gz
 
 # I previously prepare the assemblies for mapping 
-
-/usr/local/bin/bwa index -a bwtsw reference.fa
-/usr/local/bin/samtools faidx reference.fa
+```
+/usr/local/bin/bwa index -a bwtsw /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta
+/usr/local/bin/samtools faidx /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta
+```
+not sure if I need this:
+```
 ~/jre1.8.0_111/bin/java -Xmx2g -jar ~/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=reference.fa OUTPUT=reference.dict
-
+```
 
 
 Define an bash array with all of the name prefixes
