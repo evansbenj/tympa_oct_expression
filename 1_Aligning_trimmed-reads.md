@@ -51,9 +51,20 @@ echo $tympreference
 
 Now do the alignment with a bash script
 ```
-for i in {1..6}
+#!/bin/bash                                                                                            
+
+tympreference="/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta"
+
+
+samples="AO245_Heart
+AO245_Liver
+AO245_Muscle
+AO245_Kidney
+AO245_Lung
+AO245_Testis2"
+
+for sample in $samples
 do
-    sample=${samples[${i}]}
     echo ${sample}
     #Map the reads
     # make a sam file
