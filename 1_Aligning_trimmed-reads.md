@@ -48,6 +48,15 @@ tympreference=/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_
 echo $tympreference
 ```
 
+# gff3 files
+oct
+```
+/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta.transdecoder_dir/longest_orfs.gff3
+```
+tymp
+```
+/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta.transdecoder_dir/longest_orfs.gff3
+```
 
 Now do the alignment with a bash script
 ```
