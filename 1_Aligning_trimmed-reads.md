@@ -60,32 +60,34 @@ tymp
 
 Now do the alignment with a bash script
 ```
-#!/bin/bash                                                                                            
+#!/bin/bash                                                                                                                               
 
-tympreference="/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta"
+tympreference="/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir\
+/Tympa_all_transcriptomes_assembled_together_unique.fasta"
 
-annotation="/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta.transdecoder_dir/longest_orfs.gff3"
+annotation="/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Ty\
+mpa_all_transcriptomes_assembled_together_unique.fasta.transdecoder_dir/longest_orfs.gff3"
 
-samples="AO245_Heart
-AO245_Liver
-AO245_Muscle
-AO245_Kidney
-AO245_Lung
-AO245_Testis2"
+samples="AO245_Heart                                                                                                                      
+AO245_Liver                                                                                                                               
+AO245_Muscle                                                                                                                              
+AO245_Kidney                                                                                                                              
+AO245_Lung                                                                                                                                
+AO245_Testis"
 
 for sample in $samples
 do
     echo ${sample}
-    #Map the reads
-    # make a sam file
+    #Map the reads                                                                                                                        
+    # make a sam file                                                                                                                     
     /usr/local/bin/bwa mem -M -t 16 ${tympreference} ${sample}_R1_trim_paired.fastq.gz ${sample}_R2_trim_paired.fastq.gz > ${sample}.sam
-    # make a bam file
-    /usr/local/bin/samtools view -bt ${tympreference} -o ${sample}.bam ${sample}.sam
-    # delete the sam file
-    rm -f ${sample}.sam
-    # Sort by read name
-    samtools sort -n ${sample}.bam -o ${sample}_sorted    
-    #Count the number of reads mapping to each feature using HTSeq
-    htseq-count --format=bam --stranded=no --order=name --type=gene --idattr=ID ${sample}.bam ${annotation} > ${sample}_htseq_counts.txt
+    # make a bam file                                                                                                                     
+    /usr/local/bin/samtools view -bt ${tympreference} -o ${sample}.bam ${sample}.sam                                                     
+    # delete the sam file                                                                                                                 
+    rm -f ${sample}.sam                                                                                                                  
+    # Sort by read name                                                                                                                   
+    samtools sort -n ${sample}.bam -o ${sample}_sorted.bam                                                                               
+    #Count the number of reads mapping to each feature using HTSeq                                                                        
+    htseq-count --format=bam --stranded=no --order=name --type=gene --idattr=ID ${sample}_sorted.bam ${annotation} > ${sample}_htseq_counts.txt
 done
 ```
