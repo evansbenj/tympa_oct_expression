@@ -6,6 +6,7 @@ I am using the trinity assembly from the GBE paper that was proocessed with cdhi
 On info, the data within /net/infofile4-inside/volume1/scratch/ben/2017_Tymp_Oct_expression_analysis/Tympa
 
 Here are the files:
+```
 AO245_Heart_R1_trim_paired.fastq.gz   
 AO245_Heart_R2_trim_paired.fastq.gz   
 AO245_Liver_R1_trim_paired.fastq.gz  
@@ -18,6 +19,7 @@ AO245_Lung_R1_trim_paired.fastq.gz
 AO245_Lung_R2_trim_paired.fastq.gz   
 AO245_Testis_R1_trim_paired.fastq.gz
 AO245_Testis_R2_trim_paired.fastq.gz
+```
 
 # I previously prepare the assemblies for mapping 
 ```
